@@ -14,9 +14,17 @@
 */
 void test_validate_my_username()
 {
+
+    char const* username = my_username();
+    char* from_file = malloc_username_from_conf_file();
     /**
      * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
      * config file and my_username() functions are setup properly
      */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+    bool equal=true;
+    for(int c=0; username[c]!=0 && from_file[c] != 0; ++c){
+      if(username[c] != from_file[c])
+        equal = false;
+    }    
+    TEST_ASSERT_TRUE_MESSAGE(equal,"AESD students, please fix me!");
 }
