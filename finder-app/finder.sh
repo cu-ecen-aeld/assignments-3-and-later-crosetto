@@ -5,7 +5,7 @@ if [ $# -ne 2 ] ; then
    exit 1
 fi
 
-filesrid=$1
+filesdir=$1
 
 if ! [ -d $filesdir ] ; then
     exit 1
