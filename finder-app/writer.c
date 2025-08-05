@@ -6,7 +6,7 @@ int main(int argc, char** argv){
 
   openlog("mylog", 0, LOG_USER);
   if(argc != 3){
-    syslog(LOG_ERR, "wrong number of arguments %d =! 2\n", argc);
+    syslog(LOG_ERR, "wrong number of arguments %d =! 2\n", argc-1);
     exit(1);
   }
   
