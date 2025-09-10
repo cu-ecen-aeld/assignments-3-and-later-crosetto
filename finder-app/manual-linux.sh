@@ -115,9 +115,9 @@ cp autorun-qemu.sh ${OUTDIR}/rootfs/home/
 
 cd ${OUTDIR}/rootfs
 # TODO: Chown the root directory
-fakeroot -- chown root .
+sudo chown root .
 
 # TODO: Create initramfs.cpio.gz
-fakeroot -- find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
+find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 cd ..
 gzip -f initramfs.cpio
