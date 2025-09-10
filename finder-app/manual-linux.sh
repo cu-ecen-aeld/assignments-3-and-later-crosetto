@@ -5,7 +5,7 @@
 set -e
 set -u
 
-SCRIPT_DIR=`dirname $0` 
+SCRIPT_DIR="$PWD" 
 OUTDIR=/tmp/aeld
 KERNEL_REPO=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
 KERNEL_VERSION=v5.15.163
@@ -100,7 +100,6 @@ sudo mknod -m 666 dev/null c 1 3
 sudo mknod -m 666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-
 cd ${SCRIPT_DIR}
 make clean
 make writer
