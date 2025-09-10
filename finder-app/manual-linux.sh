@@ -12,7 +12,7 @@ KERNEL_VERSION=v5.15.163
 BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
-CROSS_COMPILE=aarch64-none-linux-gnu-
+export CROSS_COMPILE=aarch64-none-linux-gnu-
 
 if [ $# -lt 1 ]
 then
@@ -37,12 +37,11 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
 
 fi
 
-make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} mrproper
-echo "make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} defonfig"
-make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} defconfig
-make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} -j4 all
-make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} modules
-make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} dtbs
+#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} mrproper
+#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} defconfig
+#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} -j4 all
+#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} modules
+#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} dtbs
 
 echo "Adding the Image in outdir"
 cp -r ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/
@@ -103,8 +102,8 @@ sudo mknod -m 666 dev/console c 5 1
 # TODO: Clean and build the writer utility
 
 cd ${SCRIPT_DIR}
-rm writer
-${CROSS_COMPILE}gcc writer.c -o writer
+make clean
+make writer
 
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
