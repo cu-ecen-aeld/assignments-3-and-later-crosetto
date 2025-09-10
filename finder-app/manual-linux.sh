@@ -37,11 +37,11 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
 
 fi
 
-#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} mrproper
-#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} defconfig
-#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} -j4 all
-#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} modules
-#make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} dtbs
+make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} mrproper
+make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} defconfig
+make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} -j4 all
+make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} modules
+make ARCH=$ARCH CROSS_COMPILE=${CROSS_COMPILE} dtbs
 
 echo "Adding the Image in outdir"
 cp -r ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/
